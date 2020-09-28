@@ -37,8 +37,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Regression" href="regression.html" />
-    <link rel="prev" title="Annotating Graphs" href="annotatinggraphs.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -78,30 +76,45 @@
   </a>
  </li>
 </ul>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="differentialequations.html">
+  <a class="reference internal" href="../differential-equations/differentialequations.html">
    Differential Equations
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="differentialequations.html#to-do">
-   TO DO
+  <a class="reference internal" href="../phase-diagrams/phase_diagrams.html">
+   Stability Analysis Part 1: Phase Diagram Basics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="annotatinggraphs.html">
-   Annotating Graphs
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Clustering Graphs
+  <a class="reference internal" href="../bifurcations/bifurcations.html">
+   Stability Analysis Part 2: Bifurcations
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="regression.html">
+  <a class="reference internal" href="../stochastic-modeling/stochasticmodeling.html">
+   Stochastic Modeling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../annotating-graphs/annotatinggraphs.html">
+   Network Properties
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering-graphs/clusteringgraphs.html">
+   Clustering Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../regression/regression.html">
    Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Bibliography
   </a>
  </li>
 </ul>
@@ -214,7 +227,7 @@
 </tbody>
 </table>
 <p>Often, experimental data must be preprocessed to remove noise, outliers, and normalize the features of interest. In this case, we remove the 10th and 11th time points as outliers and remove genes with low average activity and low variability as not relevant to the environmental conditions of interest. We also normalize the gene expression vectors to have an average of 0 and a standard deviation of 1.</p>
-<p><img alt="Normalization" src="../_images/normalization.jpg" /></p>
+<p><img alt="Normalization" src="../_images/normalization1.jpg" /></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="c1">#Read in gene interaction data</span>
@@ -250,7 +263,7 @@
 <p><span class="math notranslate nohighlight">\(distance(p, q) = \sqrt{(q_1 - p_1)^2 + (q_2 - p_2)^2 + ... + (q_n - p_n)^2}\)</span></p>
 </center>
 <p>The most common method of clustering a graph is <strong>k-means clustering</strong>. K-means clustering requires the user to input the number of clusters expected, or k, as a parameter. Initially, k centroids are randomly created.</p>
-<p><img alt="Initial Cluster Assignments" src="../_images/initialclusters.jpg" /></p>
+<p><img alt="Initial Cluster Assignments" src="../_images/initialclusters1.jpg" /></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">centroid_positions</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
         <span class="n">coordinates</span> <span class="o">=</span> <span class="p">[]</span>
@@ -296,7 +309,7 @@
 <span class="n">centroid_movements</span><span class="p">,</span> <span class="n">centroid_positions</span> <span class="o">=</span> <span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">centroid_positions</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><img alt="New Cluster Positions" src="../_images/newclusters.jpg" /></p>
+<p><img alt="New Cluster Positions" src="../_images/newclusters1.jpg" /></p>
 <p>This process - assign data to clusters, then update the cluster centroids - is repeated until the centroids no longer change location significantly.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">iteration_count</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span><span class="p">(</span><span class="nb">max</span><span class="p">([</span><span class="nb">max</span><span class="p">(</span><span class="n">centroid_movements</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">)])</span> <span class="o">&gt;</span> <span class="mf">0.05</span><span class="p">):</span>
@@ -308,18 +321,18 @@
         <span class="n">centroid_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">centroid_positions</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><img alt="Final Cluster Positions" src="../_images/finalclusters.jpg" /></p>
+<p><img alt="Final Cluster Positions" src="../_images/finalclusters1.jpg" /></p>
 <p>Often, however, we do not initially know how many clusters exist in our data. We can run the k-means clustering algorithm for a variety of k values and plot the average distance to the centroid of the cluster. This plot is known as an <strong>elbow plot</strong>.</p>
-<p><img alt="Elbow Plot" src="../_images/elbow_plot_drawing.jpg" /></p>
+<p><img alt="Elbow Plot" src="../_images/elbow_plot_drawing1.jpg" /></p>
 <p>Similar clustering methods to k-means use other metrics of centrality to determine centroid location (for example, the medoid) or use similarity measures rather than strict classification.</p>
 <p>Another class of methods is agglomerative clustering methods. These methods start with all data points in separate clusters and merge close clusters iteratively until all points are combined in a single cluster.</p>
-<p><img alt="Agglomerative Clustering" src="../_images/agglomerative.jpg" /></p>
+<p><img alt="Agglomerative Clustering" src="../_images/agglomerative1.jpg" /></p>
 <p>Agglomerative methods do not assume an exact number of clusters. Instead, the results are displayed as a <strong>dendrogram</strong> and the analyst can select the appropriate number of agglomerative iterations to reach an optimal number of clusters.</p>
-<p><img alt="Dendrogram" src="../_images/dendrogram.jpg" /></p>
+<p><img alt="Dendrogram" src="../_images/dendrogram1.jpg" /></p>
 <p>We can now apply these two methods to our yeast cell cycle gene expression dataset. Since we don’t know the optimal number of clusters, we ran our clustering algorithm with 4-16 clusters and plotted the elbow plot.</p>
-<p><img alt="Elbow Plot" src="../_images/elbow_plot.png" /></p>
+<p><img alt="Elbow Plot" src="../_images/elbow_plot1.png" /></p>
 <p>Based on the elbow plot, the optimal number of clusters looks to be 15. We can look at the best clusterings by projecting the data and cluster centroids into 2 dimensions using dimensionality reduction methods (in this case, LDA).</p>
-<p><img alt="LDA" src="../_images/lda.png" /></p>
+<p><img alt="LDA" src="../_images/lda1.png" /></p>
 <p>As you can see, the clusters separate regions of the dataset. We would hypothesize that genes in the same cluster are more likely to have related functions than genes in different clusters. This information can inform later biology experiments.</p>
 </div>
 
@@ -351,8 +364,6 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="annotatinggraphs.html" title="previous page">Annotating Graphs</a>
-    <a class='right-next' id="next-link" href="regression.html" title="next page">Regression</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

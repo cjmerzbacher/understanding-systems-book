@@ -37,8 +37,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Clustering Graphs" href="clusteringgraphs.html" />
-    <link rel="prev" title="Differential Equations" href="differentialequations.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -78,30 +76,45 @@
   </a>
  </li>
 </ul>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="differentialequations.html">
+  <a class="reference internal" href="../differential-equations/differentialequations.html">
    Differential Equations
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="differentialequations.html#to-do">
-   TO DO
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Annotating Graphs
+  <a class="reference internal" href="../phase-diagrams/phase_diagrams.html">
+   Stability Analysis Part 1: Phase Diagram Basics
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="clusteringgraphs.html">
-   Clustering Graphs
+  <a class="reference internal" href="../bifurcations/bifurcations.html">
+   Stability Analysis Part 2: Bifurcations
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="regression.html">
+  <a class="reference internal" href="../stochastic-modeling/stochasticmodeling.html">
+   Stochastic Modeling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../annotating-graphs/annotatinggraphs.html">
+   Network Properties
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering-graphs/clusteringgraphs.html">
+   Clustering Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../regression/regression.html">
    Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Bibliography
   </a>
  </li>
 </ul>
@@ -217,7 +230,7 @@
 </tbody>
 </table>
 <p>We can build a graph using this data. Graphs are made up of edges and vertices. V, or the number of vertices, represents the number of components in the system (in this case, proteins). It is also known as the <strong>size of the network</strong>. E, or the number of edges, represents the number of interactions between components. The data table above is essentially a list of edges and their <strong>weights</strong>. In addition, the interactions are directed from Interactor A to Interactor B. This kind of graph is called an edge-weighted directed graph, or <strong>edge-weighted digraph</strong>.</p>
-<p><img alt="Graphs" src="../_images/basicgraph.png" /></p>
+<p><img alt="Graphs" src="../_images/basicgraph1.png" /></p>
 <p>There are multiple packages that can construct graphs for you. Later, we will use one of these (networkX) for simplicity. To start, however, we can write a simple EdgeWeightedDigraph class in Python. The graph will be made up of directed edges:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DirectedEdge</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
@@ -263,7 +276,7 @@
 </pre></div>
 </div>
 <p>Another way to represent a graph is an <strong>adjacency matrix</strong>. An adjacency matrix is a square matrix whose elements represent if a pair of vertices are connected. In the case of a weighted graph, the adjacency matrix values are the edge weights. For our sample graph above, the adjacency matrix would look like this:</p>
-<p><img alt="Adjacency Matrices" src="../_images/adjacency.png" /></p>
+<p><img alt="Adjacency Matrices" src="../_images/adjacency1.png" /></p>
 <p>Moving forward, we’ll be using the package NetworkX <strong>Link</strong> to construct and analyze our graphs. We first read in our dataset and construct a list of edges from the DataFrame. Each edge is a tuple (a list that cannot be changed) of the two vertices it connects and its weight.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
@@ -289,7 +302,7 @@
 </div>
 <p>Protein-protein interaction networks have several key properties that we can exploit to predict new disease-related genes. The <strong>degree</strong> of a node is the number of edges incident on it. In directed networks, nodes have an in-degree and an out-degree. Nodes with a high degree are known as <strong>hubs</strong>, and multiple studies have shown that essential genes are associated with hubs. Disease-causing proteins tend not to be hubs, mostly because defects in essential proteins are fatal.</p>
 <p>Since we hypothesize that disease genes tend to be peripheral, we can look for other metrics of centrality to distinguish them. <strong>Betweenness centrality</strong> measures how much a node is on pathways between other nodes. Nodes with high betweenness centrality tend to be essential. Betweenness centrality is calculated as the percentage of shortest paths that go through a node. Note that algorithms to find the shortest path will not be covered here.</p>
-<p><img alt="Betweenness Centrality" src="../_images/betweennesscentrality.png" /></p>
+<p><img alt="Betweenness Centrality" src="../_images/betweennesscentrality1.png" /></p>
 <p>For our graph, we can compute the degree and betweenness centrality of each node. To speed up the computation, we can consider only the shortest paths for the 50 nodes nearest each node in the graph. This code returns a dictionary where the keys are the node numbers and the values are the computed betweenness centralities.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Compute in and out degrees</span>
 <span class="n">degrees</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
@@ -336,7 +349,7 @@
 <span class="n">clustered_graph</span> <span class="o">=</span> <span class="n">cluster_edge_betweenness</span><span class="p">(</span><span class="n">num_iterations</span><span class="p">,</span> <span class="n">graph</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><img alt="Edge Betweenness Removals" src="../_images/eb_removals.png" /></p>
+<p><img alt="Edge Betweenness Removals" src="../_images/eb_removals1.png" /></p>
 <p>After clustering the graph by edge betweeness, we can compute the proportion of disease genes in each module. In the code below, we first count the number of connected components and their size, then compute the proportion of disease genes in each module.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Find component for each disease gene and compute counts</span>
 <span class="n">count_ccs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">size_ccs</span><span class="p">))</span>
@@ -396,8 +409,6 @@ http://networksciencebook.com/chapter/2#networks-graphs</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="differentialequations.html" title="previous page">Differential Equations</a>
-    <a class='right-next' id="next-link" href="clusteringgraphs.html" title="next page">Clustering Graphs</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

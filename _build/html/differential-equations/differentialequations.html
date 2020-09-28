@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Differential Equations &#8212; My sample book</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Stability Analysis Part 1: Phase Diagram Basics" href="../phase-diagrams/phase_diagrams.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="../intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">My sample book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Differential Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../phase-diagrams/phase_diagrams.html">
+   Stability Analysis Part 1: Phase Diagram Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bifurcations/bifurcations.html">
+   Stability Analysis Part 2: Bifurcations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stochastic-modeling/stochasticmodeling.html">
+   Stochastic Modeling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../annotating-graphs/annotatinggraphs.html">
+   Network Properties
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering-graphs/clusteringgraphs.html">
+   Clustering Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../regression/regression.html">
+   Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/differential-equations/differentialequations.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="differential-equations">
+<h1>Differential Equations<a class="headerlink" href="#differential-equations" title="Permalink to this headline">¶</a></h1>
+<p>Often it is much easier to understand what makes a system change than to explain exactly what it will do. One xexample is a chemical reaction. Centuries of chemistry research have focused on describing chemical processes with stoichiometric equations. We can tell by the reaction equation which process is occuring, but it is more difficult to estimate by eye exactly how much that reaction will change the concentrations of reactants and products in a given container. For example, ethanol combusts to form carbon dioxide and water.</p>
+<center>
+<p><span class="math notranslate nohighlight">\(reagents \rightarrow products\)</span></p>
+<p><span class="math notranslate nohighlight">\(C_2 H_5 OH(l) + 3O_2 (g) \rightarrow 2CO_2(g) + 3H_2O(l)\)</span></p>
+</center>
+<p>We understand the mechanisms that drive this system well. We know that the molecules of reactants will turn into molecules of products, and we have experimental kinetics data that measures how quickly this process occurs. Still, what if we scale up or down the reaction and want to know how the concentrations of reagents will change over time? In that case, a differential equation model can help us. <strong>Differential equations</strong> are equations that relates a function and one or more of its derivatives. Derivatives are the calculus version of rates - they describe how fast a quanitity is changing at one particular instant in time. Differential equations use derivatives to describe how a system changes.</p>
+<p>Just like chemical reactions, we can model biological processes with differential equations. One elementary example woudl be the central dogma of biology, which states that cells transcribe DNA into RNA and translate RNA into proteins.</p>
+<center>
+<p><img alt="Central Dogma of Biology" src="../_images/centraldogma.jpg" /></p>
+<p><sub><sup><em>Fig. 1: The central dogma of biology describes the process by which the hereditary material, DNA, becomes protein, which makes up many cell components. The process of making RNA from DNA is called transcription, and the process of making protein from mRNA (messenger RNA) is translation.</em></sup></sub></p>
+</center>
+<p>A simple model of gene expression must include these three components. We will call them <span class="math notranslate nohighlight">\(G\)</span>, <span class="math notranslate nohighlight">\(T\)</span>, and <span class="math notranslate nohighlight">\(P\)</span> for gene, transcript, and protein. Now we will state the assumptions of our model. Assumptions are the ground rules of the world we are building with our model. They often simplify the actual way things work in order to make modeling possible. Understanding our assumptions is important because they determine the uses and limitations of our model. First, we will assume that no new genes are made in the cell. Sure, cells eventually reproduce and synthesize new DNA, but this process occurs over a longer period of time (the generation time of the cell), so we are excluding that from our system (for now).</p>
+<center>
+<p><span class="math notranslate nohighlight">\(\frac{\delta G}{\delta t} = 0\)</span></p>
+</center>
+<p>Our next assumption is that RNA is produced at a constant rate dependent on the number of genes that can produce it. <span class="math notranslate nohighlight">\(c\)</span> is a constant that scales this rate, determined from experimental data.</p>
+<center>
+<p><span class="math notranslate nohighlight">\(\frac{\delta T}{\delta t} = cG\)</span></p>
+</center>
+<p>Protein is produced from RNA. The more RNA in a cell, the more protein that can be produced (scaled by a constant <span class="math notranslate nohighlight">\(k\)</span>). For each time step, we will assume all molecules of RNA in the cell can produce one protein.</p>
+<center>
+<p><span class="math notranslate nohighlight">\(\frac{\delta P}{\delta t} = kT\)</span></p>
+</center>
+<p>We can solve our differential equations using python. Solving a differential equation means finding functions for the evolution of the different variables over time. In this case, that would be <span class="math notranslate nohighlight">\(G(t)\)</span>, <span class="math notranslate nohighlight">\(P(t)\)</span>, and <span class="math notranslate nohighlight">\(T(t)\)</span>. We will use the odeint function from the scipy package, which requires a function that sets up our system of differential equations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
+
+<span class="k">def</span> <span class="nf">get_concs</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">G</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">P</span> <span class="o">=</span> <span class="n">C</span>
+    <span class="n">dGdt</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">dTdt</span> <span class="o">=</span> <span class="n">c</span><span class="o">*</span><span class="n">G</span>
+    <span class="n">dPdt</span> <span class="o">=</span> <span class="n">k</span><span class="o">*</span><span class="n">T</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">dGdt</span><span class="p">,</span> <span class="n">dTdt</span><span class="p">,</span> <span class="n">dPdt</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>We create a list of times. If we want higher resolution, we include more granular time points. If we want a faster simulation, we include fewer. We integrate the differential equations for each time interval, which returns a list of molecule numbers over time. Differential equations also require an <strong>initial condition</strong>. In this case, this would be the initial number of molecules of DNA, RNA, and protein.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">100.</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">ans</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">get_concs</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="n">initial_concs</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="n">times</span><span class="p">)</span>
+<span class="n">Gs</span> <span class="o">=</span> <span class="n">ans</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">Ts</span> <span class="o">=</span> <span class="n">ans</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">Ps</span> <span class="o">=</span> <span class="n">ans</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>If we set reasonable values for C and K, we can plot how <span class="math notranslate nohighlight">\(G\)</span>, <span class="math notranslate nohighlight">\(P\)</span>, and <span class="math notranslate nohighlight">\(T\)</span> change over time using the matplotlib package:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">Gs</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;DNA&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RNA&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">Ps</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Protein&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time, hrs&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Concentration, M&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+<center>
+<p><img alt="Basic Model Plot" src="../_images/de_basic_plot.png" /></p>
+<p><sub><sup><em>Fig. 2: The results of our basic model plotted over time. DNA stays constant with 2 copies, but the number of RNA and protein molecules both grow exponentially until infinitely large.</em></sup></sub></p>
+</center>
+<p>The amount of protein and mRNA in the cell grows infinitely large. This doesn’t make any physical sense - cells would explode with the amount of protein! We know that the reason cells must make more RNA and protein is because both degrade over time. Let’s add two degradation terms to the model, one for RNA and one for protein. Instead of being dependent on the number of molecules from the previous step (gene or transcript), the degradation rates are proportional to the amount of transcript or protein itself(<span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(u\)</span> are constants). Our hypothesized mechanism is that the more protein present in the cell, the more quickly enzymes that break down protein can find it, so the fast degradation will occur.</p>
+<center>
+<p><span class="math notranslate nohighlight">\(\frac{\delta T}{\delta t} = cG - vT\)</span></p>
+<p><span class="math notranslate nohighlight">\(\frac{\delta P}{\delta t} = kT - uP\)</span></p>
+</center>
+<p>Solving and plotting our updated system, we can see that the amount of protein and transcript doesn’t grow forever but levels off at a constant number of molecules.</p>
+<center>
+<p><img alt="Degradation Model Plot" src="../_images/de_deg_plot.png" /></p>
+<p><sub><sup><em>Fig. 3: The results of our model incorporating degradation plotted over time. DNA still stays constant with 2 copies, but DNA and RNA both grow until a steady state equilibrium is reached. At this equilibrium point (8 copies for protein, 4 copies for RNA), degradation and production are balanced.</em></sup></sub></p>
+</center>
+<p>Let’s add one more mechanism to our model. Often cells know to stop producing a certain protein using negative regulation. The protein produced by a certain gene can block that gene’s further transcription. Therefore, the more protein in a cell, the less the gene that makes it is transcribed, which keeps the levels of protein in a cell stable. This process is known as <strong>autoregulation</strong>.</p>
+<center>
+<p><span class="math notranslate nohighlight">\(\frac{\delta G}{\delta t} = -dP\)</span></p>
+</center>
+<center>
+<p><img alt="Autoregulation Model Plot" src="../_images/de_autoreg_plot.png" /></p>
+<p><sub><sup><em>Fig. 4: The results of our autoregulation model plotted over time. Depending on the amount of autoregulation, the amplitude of the oscillations in the number of molecules will either grow (underdamped) or shrink (underdamped). In the plot shown, the oscillations are perfectly damped and will remain the same size. Note that the number of DNA molecules doesn’t represent degradation but rather inactivation by the protein product.</em></sup></sub></p>
+</center>
+<p>You can repeat this process, adding new components and mechanisms to the model based on our existing physical understanding of the underlying mechanisms. Notice that as we added more mechanisms to the model, it grew more complex.</p>
+<p>But what about gene regulation systems where multiple proteins or RNAs influence production of another protein? Or genes that produce multiple RNAs via alternative splicing? Or multiple genes modeled at once? What about the whole genome? Very quickly, by expanding the boundaries of our system, differential equation models become too complex to design and solve quickly.</p>
+<p>One way to reduce this complexity is to narrow the questions we are asking. If we don’t care about every moment in time but just where a system ends up - where it sits at equilibrium - we can focus on <span class="xref myst">equilibrium analysis</span> instead.</p>
+<p>Another direction we can go is to focus less explicitly on the exact mechanisms of the system. Sometimes this is our only option - we don’t know the mechanism of the process we’re studying. These models assume less knowledge about the system we’re working on, and are driven primarily by data. We’ll discuss models like these in lager sections.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./differential-equations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">Welcome to your Jupyter Book</a>
+    <a class='right-next' id="next-link" href="../phase-diagrams/phase_diagrams.html" title="next page">Stability Analysis Part 1: Phase Diagram Basics</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,6 +1,9 @@
 - file: intro
-- file: docs/differentialequations
-- file: docs/stochastingmodeling
-- file: docs/annotatinggraphs
-- file: docs/clusteringgraphs
-- file: docs/regression
+- file: differential-equations/differentialequations
+- file: phase-diagrams/phase_diagrams
+- file: bifurcations/bifurcations
+- file: stochastic-modeling/stochasticmodeling
+- file: annotating-graphs/annotatinggraphs
+- file: clustering-graphs/clusteringgraphs
+- file: regression/regression
+- file: bibliography
