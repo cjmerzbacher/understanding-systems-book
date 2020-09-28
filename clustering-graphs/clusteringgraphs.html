@@ -1,0 +1,419 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clustering Algorithms &#8212; My sample book</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Regression" href="../regression/regression.html" />
+    <link rel="prev" title="Network Properties" href="../annotating-graphs/annotatinggraphs.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">My sample book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../differential-equations/differentialequations.html">
+   Differential Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../phase-diagrams/phase_diagrams.html">
+   Stability Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bifurcations/bifurcations.html">
+   Bifurcations and Equilibrium
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stochastic-modeling/stochasticmodeling.html">
+   Stochastic Modeling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../annotating-graphs/annotatinggraphs.html">
+   Network Properties
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Clustering Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../regression/regression.html">
+   Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/clustering-graphs/clusteringgraphs.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="clustering-algorithms">
+<h1>Clustering Algorithms<a class="headerlink" href="#clustering-algorithms" title="Permalink to this headline">¶</a></h1>
+<p>In the last <a class="reference internal" href="../annotating-graphs/annotatinggraphs.html"><span class="doc std std-doc">section</span></a> we looked at networks and their properties. The data we used gave an explicit list of relationships, or edges, to create our network. But what happens if we have data on the features of a particular object set, but not information on how or how much those objects interact? How do we hypothesize functional similarity or interaction?</p>
+<p>One common example of datasets of this type is <strong>gene expression data</strong>. We can obtain the relative amount a gene is expressed under different conditions using microarray hybridization experiments. We would expect genes with similar functions to be similarly expressed. Thus, if we cluster the features of the dataset, we may find modules of genes with mechanistic connections.</p>
+<p>The sample dataset used in this section is yeast mitotic cell cycle data. A sample of the dataset is below. There are columns for the gene name (if known) and its relative expression levels at timepoints 0 to 160 minutes.</p>
+<center>
+<p><sub><sup><em>Table 1: gene expression data. Each column represents a time point. Each row is a gene and its relative expression levels.</em></sup></sub></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Gene Name</p></th>
+<th class="text-align:center head"><p><em>t</em> = 0</p></th>
+<th class="text-align:center head"><p>…</p></th>
+<th class="text-align:right head"><p><em>t</em> = 160</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>YDL025C</p></td>
+<td class="text-align:center"><p>-0.1725</p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:right"><p>-0.3135</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>YKL032C</p></td>
+<td class="text-align:center"><p>-0.2364</p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:right"><p>0.0751</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>YJR150C</p></td>
+<td class="text-align:center"><p>-0.6929</p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:right"><p>-0.7298</p></td>
+</tr>
+</tbody>
+</table>
+</center>
+<p>Often, experimental data must be preprocessed to remove noise, outliers, and normalize the features of interest. In this case, we remove the 10th and 11th time points as outliers based on information from the literature.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1">#Read in gene interaction data</span>
+<span class="n">raw_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;yeast_gene_interactions.csv&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1">#Remove 90, 100 minute time point as outliers</span>
+<span class="n">raw_data</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;t:90&#39;</span><span class="p">,</span> <span class="s1">&#39;t:100&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>We also remove genes with low average activity and low variability as not relevant to the environmental conditions of interest.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Remove ORFs with low average </span>
+<span class="n">raw_data</span><span class="p">[</span><span class="s1">&#39;row_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span> <span class="p">,</span> <span class="s2">&quot;t:0&quot;</span><span class="p">:</span><span class="s2">&quot;t:160&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cutoff</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">row_mean</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">row_mean</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span>
+<span class="n">cleaned_data</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_data</span><span class="o">.</span><span class="n">row_mean</span> <span class="o">&gt;</span> <span class="n">cutoff</span><span class="p">]</span>
+
+<span class="c1">#remove ORFs with low variability</span>
+<span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;row_std&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cleaned_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span> <span class="p">,</span> <span class="s2">&quot;t:0&quot;</span><span class="p">:</span><span class="s2">&quot;t:160&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cutoff</span> <span class="o">=</span> <span class="n">cleaned_data</span><span class="o">.</span><span class="n">row_std</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">cleaned_data</span><span class="o">.</span><span class="n">row_std</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span>
+<span class="n">cleaned_data</span> <span class="o">=</span> <span class="n">cleaned_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">row_std</span> <span class="o">&gt;</span> <span class="n">cutoff</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Finally, we normalize the gene expression vectors to have an average of 0 and a standard deviation of 1. Normalization adjusts values measured in different scales to a common scale, often centered at zero. To do this, we subtract the mean expression value for a gene from each of its expression data points and divide by its standard deviation</p>
+<center>
+<p><img alt="Normalization" src="../_images/normalization.jpg" /></p>
+<p><sub><sup><em>Fig. 1: Normalizing a distribution centers it around zero and sets the standard deviation to be 1. This allows for easier comparison of features with different original scales.</em></sup></sub></p>
+</center>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Normalize gene vectors </span>
+<span class="n">normalized_data</span> <span class="o">=</span> <span class="n">cleaned_data</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cleaned_data</span><span class="p">)):</span>
+    <span class="n">gene_vector</span> <span class="o">=</span> <span class="n">cleaned_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;t:0&#39;</span><span class="p">:</span><span class="s1">&#39;t:160&#39;</span><span class="p">]</span>
+    <span class="n">new_vector</span> <span class="o">=</span> <span class="p">(</span><span class="n">gene_vector</span> <span class="o">-</span> <span class="n">gene_vector</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="p">)</span> <span class="o">/</span> <span class="n">gene_vector</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="n">normalized_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_vector</span>
+<span class="n">normalized_data</span><span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cleaned_data</span><span class="o">.</span><span class="n">NAME</span>
+<span class="n">normalized_data</span><span class="p">[</span><span class="s1">&#39;YORF&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cleaned_data</span><span class="o">.</span><span class="n">YORF</span>
+<span class="n">normalized_data</span><span class="p">[</span><span class="s1">&#39;GWEIGHT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cleaned_data</span><span class="o">.</span><span class="n">GWEIGHT</span>
+
+</pre></div>
+</div>
+<p>There are a variety of clustering algorithms, but all of them rely on calculating how close individual data points are to each other. But what does distance mean in a high-dimensional space like our gene expression data? One common distance metric is the <strong>Euclidean distance</strong>. The Euclidean distance between two points in n-dimensional space is defined as</p>
+ <center>
+<p><span class="math notranslate nohighlight">\(distance(p, q) = \sqrt{(q_1 - p_1)^2 + (q_2 - p_2)^2 + ... + (q_n - p_n)^2}\)</span></p>
+</center>
+<p>The most common method of clustering a graph is <strong>k-means clustering</strong>. K-means clustering requires the user to input the number of clusters expected, or k, as a parameter. Initially, k centroids are randomly created.</p>
+<p><img alt="Initial Cluster Assignments" src="../_images/initialclusters.jpg" /></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">centroid_positions</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="n">coordinates</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+            <span class="n">coordinates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="n">centroid_positions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Each data point is assigned to the cluster of the closest centroid (using Euclidean distance). The sample assignment function is below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">assign</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">centroid_positions</span><span class="p">):</span>
+    <span class="n">cluster_assignments</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)):</span>
+        <span class="n">datapt</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">min_distance</span> <span class="o">=</span> <span class="mi">800000</span>
+        <span class="n">cluster_assignment</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">centroid_positions</span><span class="p">)):</span>
+            <span class="n">euclidean_distance</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">([(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">centroid_positions</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">datapt</span><span class="p">)]))</span>
+            <span class="k">if</span> <span class="n">euclidean_distance</span> <span class="o">&lt;</span> <span class="n">min_distance</span><span class="p">:</span>
+                <span class="n">min_distance</span> <span class="o">=</span> <span class="n">euclidean_distance</span>
+                <span class="n">cluster_assignment</span> <span class="o">=</span> <span class="n">j</span>
+        <span class="n">cluster_assignments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cluster_assignment</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cluster_assignments</span>
+
+    <span class="n">cluster_assignments</span> <span class="o">=</span> <span class="n">assign</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">centroid_positions</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;closest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cluster_assignments</span>
+</pre></div>
+</div>
+<p>Now, the centroids of the assigned clusters are recalculated.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">centroid_positions</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">centroid_movements</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="n">datapt_centroid</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">closest</span> <span class="o">==</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="s1">&#39;t:0&#39;</span><span class="p">:</span><span class="s1">&#39;t:160&#39;</span><span class="p">]</span>
+        <span class="n">new_coordinates</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">datapt_centroid</span><span class="p">:</span>
+            <span class="n">new_coordinate</span> <span class="o">=</span> <span class="n">datapt_centroid</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+            <span class="n">new_coordinates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_coordinate</span><span class="p">)</span>
+        <span class="n">centroid_movement</span> <span class="o">=</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">centroid_positions</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">coord</span><span class="p">)]</span>
+        <span class="n">centroid_movements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">centroid_movement</span><span class="p">)</span>
+        <span class="n">centroid_positions</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_coordinates</span>
+    <span class="k">return</span> <span class="n">centroid_movements</span><span class="p">,</span> <span class="n">centroid_positions</span>
+
+<span class="n">centroid_movements</span><span class="p">,</span> <span class="n">centroid_positions</span> <span class="o">=</span> <span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">centroid_positions</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="New Cluster Positions" src="../_images/newclusters.jpg" /></p>
+<p>This process - assign data to clusters, then update the cluster centroids - is repeated until the centroids no longer change location significantly. We can set our definition of ‘significantly’ by setting a tolerance value - how little the centroids would have to move before we consider them stable.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">iteration_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">0.05</span>
+    <span class="k">while</span><span class="p">(</span><span class="nb">max</span><span class="p">([</span><span class="nb">max</span><span class="p">(</span><span class="n">centroid_movements</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">)])</span> <span class="o">&gt;</span> <span class="n">tolerance</span><span class="p">):</span>
+        <span class="n">iteration_count</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iteration&#39;</span><span class="p">,</span> <span class="n">iteration_count</span><span class="p">)</span>
+        <span class="n">cluster_assignments</span> <span class="o">=</span> <span class="n">assign</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">centroid_positions</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;closest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cluster_assignments</span>
+        <span class="n">centroid_movements</span><span class="p">,</span> <span class="n">centroid_positions</span> <span class="o">=</span> <span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">centroid_positions</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+        <span class="n">centroid_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">centroid_positions</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="Final Cluster Positions" src="../_images/finalclusters.jpg" /></p>
+<p>Often, however, we do not initially know how many clusters exist in our data. We can run the k-means clustering algorithm for a variety of k values and plot the average distance to the centroid of the cluster. This plot is known as an <strong>elbow plot</strong>.</p>
+<center>
+<p><img alt="Elbow Plot" src="../_images/elbow_plot_drawing.jpg" /></p>
+<p><sub><sup><em>Fig. 2: An elbow plot diagram. When the rate of change of the distortion decreases (the ‘elbow’ of the plot), the optimal <span class="math notranslate nohighlight">\(k\)</span> value has been reached.</em></sup></sub></p>
+</center>
+<p>Similar clustering methods to k-means use other metrics of centrality to determine centroid location (for example, the medoid) or use similarity measures rather than strict classification.</p>
+<p>Another class of methods is agglomerative clustering methods. These methods start with all data points in separate clusters and merge close clusters iteratively until all points are combined in a single cluster.</p>
+<center>
+<p><img alt="Agglomerative Clustering" src="../_images/agglomerative.jpg" /></p>
+<p><sub><sup><em>Fig. 3: Agglomerative clustering methods start with each data point as an original cluster and combine clusters until the desired number of clusters has been reached or all data points are combined into one cluster.</em></sup></sub></p>
+</center>
+<p>Agglomerative methods do not assume an exact number of clusters. Instead, the results are displayed as a <strong>dendrogram</strong> and the analyst can select the appropriate number of agglomerative iterations to reach an optimal number of clusters.</p>
+<center>
+<p><img alt="Dendrogram" src="../_images/dendrogram.jpg" /></p>
+<p><sub><sup><em>Fig. 4: Dendrograms map the number of clusters over time. As the agglomerative clustering method iterates, the overall number of clusters reduces. Looking at these plots can help a scientist determine the optimal number of clusters.</em></sup></sub></p>
+</center>
+<p>We can now apply these two methods to our yeast cell cycle gene expression dataset. Since we don’t know the optimal number of clusters, we ran our clustering algorithm with 4-16 clusters and plotted the elbow plot.</p>
+<center>
+<p><img alt="Elbow Plot" src="../_images/elbow_plot.png" /></p>
+<p><sub><sup><em>Fig. 5: The elbow plot from our k-means clustering algorithm.</em></sup></sub></p>
+</center>
+<p>Based on the elbow plot, the optimal number of clusters looks to be around 15. We can look at the best clusterings by projecting the data and cluster centroids into 2 dimensions using dimensionality reduction methods (in this case, LDA).</p>
+<center>
+<p><img alt="LDA" src="../_images/lda.png" /></p>
+<p><sub><sup><em>Fig. 6: Plotting the clusters and our data in 2 dimensions requires dimensionality reduction. In this case we used LDA.</em></sup></sub></p>
+</center>
+<p>As you can see, the clusters separate regions of the dataset. We would hypothesize that genes in the same cluster are more likely to have related functions than genes in different clusters. This information can inform later biology experiments. As with other network models, clustering algorithms allow us to look at undifferentiated data and make inferences about potential functional relationships. However, these models do not provide a causal mechanism and thus must be paired with mechanistic experiments.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./clustering-graphs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../annotating-graphs/annotatinggraphs.html" title="previous page">Network Properties</a>
+    <a class='right-next' id="next-link" href="../regression/regression.html" title="next page">Regression</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

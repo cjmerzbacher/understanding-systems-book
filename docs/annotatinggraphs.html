@@ -1,0 +1,433 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Annotating Graphs &#8212; My sample book</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">My sample book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../differential-equations/differentialequations.html">
+   Differential Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../phase-diagrams/phase_diagrams.html">
+   Stability Analysis Part 1: Phase Diagram Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bifurcations/bifurcations.html">
+   Stability Analysis Part 2: Bifurcations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stochastic-modeling/stochasticmodeling.html">
+   Stochastic Modeling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../annotating-graphs/annotatinggraphs.html">
+   Network Properties
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering-graphs/clusteringgraphs.html">
+   Clustering Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../regression/regression.html">
+   Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/annotatinggraphs.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bibliography">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="annotating-graphs">
+<h1>Annotating Graphs<a class="headerlink" href="#annotating-graphs" title="Permalink to this headline">¶</a></h1>
+<p>Complex systems are often networks of simpler components. In biology, one example are interactions in the human proteome. Just like a genome is all the genes an organism has, the <strong>proteome</strong> is all the proteins an organism can express. The human proteome is not static: while there are around 20,000 genes, each gene can undergo alternative splicing to create multiple proteins. Proteins interact with each other to carry out most cellular processes. These protein-protein interactions can be represented mathematically using <strong>protein-protein interaction networks</strong>. Several databases store these interaction networks and update them based on experimental data. In this section, we will use <a class="reference external" href="http://cbdm-01.zdv.uni-mainz.de/~mschaefer/hippie/index.php">HIPPIE</a> (Human Integrated Protein-Protein Interactome rEference).</p>
+<p>One of the key uses of PPI networks is to identify new disease-related proteins in the human proteome. Once we construct a graph based on the PPI data, we can annotate it to hypothesize groups of related genes.</p>
+<p>You can download the most recent HIPPIE database <a class="reference external" href="http://cbdm-01.zdv.uni-mainz.de/~mschaefer/hippie/hippie_current.txt">here</a>. It’s formatted as a text file with columns for the two interactors and a confidence value assgined based on the number and quality of studies showing a particular interaction.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Interactor A</p></th>
+<th class="text-align:center head"><p>Interactor B</p></th>
+<th class="text-align:center head"><p>Confidence Score</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>NEB1</p></td>
+<td class="text-align:center"><p>ACTG</p></td>
+<td class="text-align:center"><p>0.73</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>SRGN</p></td>
+<td class="text-align:center"><p>CD44</p></td>
+<td class="text-align:center"><p>0.65</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>GRB7</p></td>
+<td class="text-align:center"><p>ERBB2</p></td>
+<td class="text-align:center"><p>0.9</p></td>
+</tr>
+</tbody>
+</table>
+<p>We can build a graph using this data. Graphs are made up of edges and vertices. V, or the number of vertices, represents the number of components in the system (in this case, proteins). It is also known as the <strong>size of the network</strong>. E, or the number of edges, represents the number of interactions between components. The data table above is essentially a list of edges and their <strong>weights</strong>. In addition, the interactions are directed from Interactor A to Interactor B. This kind of graph is called an edge-weighted directed graph, or <strong>edge-weighted digraph</strong>.</p>
+<p><img alt="Graphs" src="../_images/basicgraph1.png" /></p>
+<p>There are multiple packages that can construct graphs for you. Later, we will use one of these (networkX) for simplicity. To start, however, we can write a simple EdgeWeightedDigraph class in Python. The graph will be made up of directed edges:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DirectedEdge</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span>
+    
+    <span class="k">def</span> <span class="nf">toString</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> -&gt; </span><span class="si">{}</span><span class="s1">  </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The toString() method prints the edge with its weight so we can visualize the graph later on.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">EdgeWeightedDigraph</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">V</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">V</span> <span class="o">=</span> <span class="n">V</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">E</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">V</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+    
+    <span class="k">def</span> <span class="nf">addEdge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DirectedEdge</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">weight</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">E</span><span class="o">+=</span><span class="mi">1</span>
+    
+    <span class="k">def</span> <span class="nf">getEdges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">toString</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>We can initialize a new version of this graph and add some edges to it to test it out:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ewdg</span> <span class="o">=</span> <span class="n">EdgeWeightedDigraph</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ewdg</span><span class="o">.</span><span class="n">addEdge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">ewdg</span><span class="o">.</span><span class="n">addEdge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)</span>
+<span class="n">ewdg</span><span class="o">.</span><span class="n">addEdge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">)</span>
+<span class="n">ewdg</span><span class="o">.</span><span class="n">getEdges</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This should print:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">1</span>  <span class="mf">0.3</span>
+<span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">2</span>  <span class="mf">0.9</span>
+<span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">2</span>  <span class="mf">0.15</span>
+</pre></div>
+</div>
+<p>Another way to represent a graph is an <strong>adjacency matrix</strong>. An adjacency matrix is a square matrix whose elements represent if a pair of vertices are connected. In the case of a weighted graph, the adjacency matrix values are the edge weights. For our sample graph above, the adjacency matrix would look like this:</p>
+<p><img alt="Adjacency Matrices" src="../_images/adjacency1.png" /></p>
+<p>Moving forward, we’ll be using the package NetworkX <strong>Link</strong> to construct and analyze our graphs. We first read in our dataset and construct a list of edges from the DataFrame. Each edge is a tuple (a list that cannot be changed) of the two vertices it connects and its weight.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;cleaned_data.csv&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="n">edges</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)):</span>
+    <span class="n">edge</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">id_A</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">id_B</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">weight</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The DiGraph class starts out empty, then we add all the edges in the list we just made.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="n">graph</span><span class="o">.</span><span class="n">add_weighted_edges_from</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>NetworkX has a large variety of useful functions, including a function that creates an adjacency matrix for us:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Protein-protein interaction networks have several key properties that we can exploit to predict new disease-related genes. The <strong>degree</strong> of a node is the number of edges incident on it. In directed networks, nodes have an in-degree and an out-degree. Nodes with a high degree are known as <strong>hubs</strong>, and multiple studies have shown that essential genes are associated with hubs. Disease-causing proteins tend not to be hubs, mostly because defects in essential proteins are fatal.</p>
+<p>Since we hypothesize that disease genes tend to be peripheral, we can look for other metrics of centrality to distinguish them. <strong>Betweenness centrality</strong> measures how much a node is on pathways between other nodes. Nodes with high betweenness centrality tend to be essential. Betweenness centrality is calculated as the percentage of shortest paths that go through a node. Note that algorithms to find the shortest path will not be covered here.</p>
+<p><img alt="Betweenness Centrality" src="../_images/betweennesscentrality1.png" /></p>
+<p>For our graph, we can compute the degree and betweenness centrality of each node. To speed up the computation, we can consider only the shortest paths for the 50 nodes nearest each node in the graph. This code returns a dictionary where the keys are the node numbers and the values are the computed betweenness centralities.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Compute in and out degrees</span>
+<span class="n">degrees</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
+
+<span class="c1">#Compute the betweenness centrality</span>
+<span class="n">betweenness_centralities</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Using these computations, we can rank the proteins in our dataset from most hub-like to most peripheral.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create dataframe from </span>
+<span class="n">bc_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">betweenness_centralities</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;bc&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">degrees_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">degrees</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;degrees&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1">#Join with original dataframe</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">bc_df</span><span class="p">,</span> <span class="n">degrees_df</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))]</span>
+<span class="n">merge</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+
+<span class="c1">#Sort nodes by centrality and degree</span>
+<span class="n">sorted_by_centrality</span> <span class="o">=</span> <span class="n">merge</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;bc&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sorted_by_degree</span> <span class="o">=</span> <span class="n">merge</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;degrees&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The top 3 most hub-like nodes by degree are ESR2, TRIM25, and APP. The top 3 most hub-like nodes by betweenness centrality are PDZK1, APP, and ITGA4. ESR2 and TRIM25 are both transcription factors, which are proteins that interact with genes, as well as other transcription factors, to regulate transcription. By definition, these genes often have many protein-protein interactions.</p>
+<p>Another hypothesis of network medicine is the <strong>local hypothesis</strong>, which states that proteins involved with the same disease tend to cluster in the same network neighborhood and interact with each other in a <strong>disease module</strong>. We can search the literature for a list of known disease-causing genes and use them to construct a disease module. We can then predict that nodes that are within the disease module are more likely to cause that disease, even if their function is not yet known.</p>
+<p>Let’s look at an example disease. Previous research into Alzheimer’s has identified several genes associated with the disease. Using the database <a class="reference external" href="http://cbdm-01.zdv.uni-mainz.de/~jfontain/cgi-bin/genes2diseases.pl">here</a>, we can select a list of these genes.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">als_gene_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;APP&#39;</span><span class="p">,</span><span class="s1">&#39;BACE1&#39;</span><span class="p">,</span><span class="s1">&#39;PSEN1&#39;</span><span class="p">,</span><span class="s1">&#39;MAPT&#39;</span><span class="p">,</span><span class="s1">&#39;APOE&#39;</span><span class="p">,</span><span class="s1">&#39;SNCA&#39;</span><span class="p">,</span><span class="s1">&#39;PSEN2&#39;</span><span class="p">,</span>
+<span class="s1">&#39;C9orf72&#39;</span><span class="p">,</span><span class="s1">&#39;BDNF&#39;</span><span class="p">,</span><span class="s1">&#39;GRN&#39;</span><span class="p">,</span><span class="s1">&#39;TARDBP&#39;</span><span class="p">,</span><span class="s1">&#39;LRRK2&#39;</span><span class="p">,</span><span class="s1">&#39;PRNP&#39;</span><span class="p">,</span><span class="s1">&#39;PARK2&#39;</span><span class="p">,</span><span class="s1">&#39;SORL1&#39;</span><span class="p">,</span>
+<span class="s1">&#39;CLU&#39;</span><span class="p">,</span><span class="s1">&#39;GSK3B&#39;</span><span class="p">,</span><span class="s1">&#39;NOTCH3&#39;</span><span class="p">,</span><span class="s1">&#39;TOMM40&#39;</span><span class="p">,</span><span class="s1">&#39;IDE&#39;</span><span class="p">,</span><span class="s1">&#39;SOD1&#39;</span><span class="p">,</span><span class="s1">&#39;PICALM&#39;</span><span class="p">,</span><span class="s1">&#39;TREM2&#39;</span><span class="p">,</span>
+<span class="s1">&#39;CHAT&#39;</span><span class="p">,</span><span class="s1">&#39;PINK1&#39;</span><span class="p">,</span><span class="s1">&#39;CDK5&#39;</span><span class="p">,</span><span class="s1">&#39;NCSTN&#39;</span><span class="p">,</span><span class="s1">&#39;BCHE&#39;</span><span class="p">,</span><span class="s1">&#39;CYP46A1&#39;</span><span class="p">,</span><span class="s1">&#39;BACE2&#39;</span><span class="p">,</span><span class="s1">&#39;DYRK1A&#39;</span><span class="p">,</span>
+<span class="s1">&#39;LRP1&#39;</span><span class="p">,</span><span class="s1">&#39;HTT&#39;</span><span class="p">,</span><span class="s1">&#39;A2M&#39;</span><span class="p">,</span><span class="s1">&#39;COMT&#39;</span><span class="p">,</span><span class="s1">&#39;APBB1&#39;</span><span class="p">,</span><span class="s1">&#39;CALHM1&#39;</span><span class="p">,</span><span class="s1">&#39;ITM2B&#39;</span><span class="p">,</span><span class="s1">&#39;IL1A&#39;</span><span class="p">,</span><span class="s1">&#39;VCP&#39;</span><span class="p">,</span>
+<span class="s1">&#39;PIN1&#39;</span><span class="p">,</span><span class="s1">&#39;PARK7&#39;</span><span class="p">,</span><span class="s1">&#39;CR1&#39;</span><span class="p">,</span><span class="s1">&#39;CST3&#39;</span><span class="p">,</span><span class="s1">&#39;CHRNA7&#39;</span><span class="p">,</span><span class="s1">&#39;CTSD&#39;</span><span class="p">,</span><span class="s1">&#39;ADAM10&#39;</span><span class="p">,</span><span class="s1">&#39;FUS&#39;</span><span class="p">,</span><span class="s1">&#39;ACE&#39;</span><span class="p">,</span>
+<span class="s1">&#39;IL1B&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>To find potential disease modules related to Alzheimer’s, we can perform an algorithm that repeatedly removes the edges with high <strong>edge betwenness</strong> from the graph. Edge betweenness is similar to betweenness centrality, except it is computed for a specific edge rather than a node. We would expect modules to have a few edges with high edge betweeness connecting one module to another. When we have completed this process, we will have a dendrogram (see the Clustering Graphs section). The module with the highest proportion of disease genes is hypothesized to be the disease module. We can make a list of the non-annotated nodes in the disease module and predict that these proteins may be disease-linked as well. We can further narrow down the list by computing the degree of these nodes and excluding hubs.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cluster_edge_betweenness</span><span class="p">(</span><span class="n">iterations</span><span class="p">,</span> <span class="n">G</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span><span class="p">):</span>
+        <span class="n">eb</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">edge_betweenness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="n">max_eb</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">eb</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">eb</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="n">max_eb</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">max_eb</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">G</span>
+
+<span class="n">clustered_graph</span> <span class="o">=</span> <span class="n">cluster_edge_betweenness</span><span class="p">(</span><span class="n">num_iterations</span><span class="p">,</span> <span class="n">graph</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="Edge Betweenness Removals" src="../_images/eb_removals1.png" /></p>
+<p>After clustering the graph by edge betweeness, we can compute the proportion of disease genes in each module. In the code below, we first count the number of connected components and their size, then compute the proportion of disease genes in each module.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Find component for each disease gene and compute counts</span>
+<span class="n">count_ccs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">size_ccs</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">als_gene_list</span><span class="p">)):</span>
+    <span class="n">als_gene</span> <span class="o">=</span> <span class="n">als_gene_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">als_gene_key</span> <span class="o">=</span> <span class="n">als_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">als_data</span><span class="o">.</span><span class="n">A</span> <span class="o">==</span> <span class="n">als_gene</span><span class="p">]</span><span class="o">.</span><span class="n">id_A</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">als_gene_key</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">cc</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">node_connected_component</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">als_gene_key</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">size_ccs</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">cc</span> <span class="o">==</span> <span class="n">size_ccs</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                <span class="n">count_ccs</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">percent_disease_genes</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">count_ccs</span><span class="o">/</span><span class="n">size_ccs</span>
+
+<span class="n">new_graph</span> <span class="o">=</span> <span class="n">cluster_edge_betweenness</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">new_graph</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This section offers only a brief introduction to network properties and annotating graphs. For further reading on network medicine, we recommend <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3140052/">this review</a> by Barabási et al.</p>
+<div class="section" id="bibliography">
+<h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h2>
+<p>https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4889822/
+http://networksciencebook.com/chapter/2#networks-graphs</p>
+<p>Proximity KNN Graph: https://proxi.readthedocs.io/en/latest/tutorials/proxi_example_1.html</p>
+<p>Local search algorithms paper</p>
+<p>https://networkx.github.io/documentation/stable/reference/algorithms/generated/networkx.algorithms.assortativity.k_nearest_neighbors.html?highlight=k%20nearest#networkx.algorithms.assortativity.k_nearest_neighbors</p>
+<p>Network Medicine: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3140052/</p>
+<p>Good defs of centrality, EB etc: https://www.nature.com/articles/s41598-019-41552-z</p>
+<p>Algorithm source: http://finzi.psych.upenn.edu/library/igraph/html/cluster_edge_betweenness.html with paper</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

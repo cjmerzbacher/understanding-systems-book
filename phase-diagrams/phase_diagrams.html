@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stability Analysis &#8212; My sample book</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bifurcations and Equilibrium" href="../bifurcations/bifurcations.html" />
+    <link rel="prev" title="Differential Equations" href="../differential-equations/differentialequations.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">My sample book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../differential-equations/differentialequations.html">
+   Differential Equations
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Stability Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bifurcations/bifurcations.html">
+   Bifurcations and Equilibrium
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../stochastic-modeling/stochasticmodeling.html">
+   Stochastic Modeling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../annotating-graphs/annotatinggraphs.html">
+   Network Properties
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clustering-graphs/clusteringgraphs.html">
+   Clustering Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../regression/regression.html">
+   Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/phase-diagrams/phase_diagrams.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-logistic-model">
+   The Logistic Model
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#graph-1-logistic-curve">
+     Graph 1: Logistic Curve
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-logistic-model-redux">
+   The Logistic Model redux
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#graph-2-first-order-phase-portrait">
+     Graph 2: First order phase portrait
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recap">
+   Recap
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="stability-analysis">
+<h1>Stability Analysis<a class="headerlink" href="#stability-analysis" title="Permalink to this headline">¶</a></h1>
+<p>What do you do when you encounter systems whose dynamics are so complex that the differential equations used to model them can’t be (easily) solved with analytical methods? In this section, we explore how phase diagrams can be used to predict the system’s future, and to form a qualitative overview of possible state trajectories. We’ll apply this method to a fictional stock of “redfish” in a contained environment.</p>
+<div class="section" id="the-logistic-model">
+<h2>The Logistic Model<a class="headerlink" href="#the-logistic-model" title="Permalink to this headline">¶</a></h2>
+<p>When approaching a system of differential equations, our goal is almost always to be able to predict the system’s behavior given any set of initial conditions. We often approach this problem by deducing an algebraic equation we use to calculate precise values over time. But when the differential equations are too complex to solve, as is often the case for ecological applications, we still have options.</p>
+<p>Let’s demonstrate.</p>
+<p>You might be familiar with the <strong>logistic</strong> model for population growth. It uses the following parameters:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r\)</span>, the population’s <strong>intrinsic growth rate</strong>. It’s important to differentiate between the intrinsic growth rate and the instantaneous growth rate. <span class="math notranslate nohighlight">\(r\)</span> doesn’t measure the population’s rate of growth at a given time, it dictates the overall speed at which the population approaches</p></li>
+<li><p><span class="math notranslate nohighlight">\(K\)</span>, the environment’s <strong>carrying capacity</strong>. The logistic model assumes that the environment’s resources are limited, such that there exists a maximum population size that can be sustained. <span class="math notranslate nohighlight">\(K\)</span> represents that maximum size.</p></li>
+</ul>
+<p>(Quick review of the difference between <strong>variables</strong> and <strong>parameters</strong>. Where variables are metrics by which we measure a system’s behavior over time, parameters represent conditions that control the path of the system’s bhavior. Where variables can be expected to change over time, parameters are generally only changed by influence from outside the system. When we make graphs of system behavior, we’ll usually choose a few variables as the graph’s axes, whereas parameters will determine the graph’s shape.)</p>
+<p>Now, the logistic model is actually simple enough to have a reasonable algebraic equation:</p>
+<div class="math notranslate nohighlight" id="equation-1">
+<span class="eqno">(1)<a class="headerlink" href="#equation-1" title="Permalink to this equation">¶</a></span>\[n=\frac{K}{1+Ae^{-rt}}\]</div>
+<p>in which <span class="math notranslate nohighlight">\(n =\)</span> the stock size, <span class="math notranslate nohighlight">\(t =\)</span> time, and <span class="math notranslate nohighlight">\(A = \frac{K-n_{0}}{n_{0}}\)</span> where <span class="math notranslate nohighlight">\(n_{0} =\)</span> the population at <span class="math notranslate nohighlight">\(t=0\)</span>.</p>
+<p>With this equation, we can plot a time series to see the logistic curve:</p>
+<div class="section" id="graph-1-logistic-curve">
+<h3>Graph 1: Logistic Curve<a class="headerlink" href="#graph-1-logistic-curve" title="Permalink to this headline">¶</a></h3>
+<p>Stock over time. Sliders for <span class="math notranslate nohighlight">\(K\)</span>, <span class="math notranslate nohighlight">\(r\)</span>, and <span class="math notranslate nohighlight">\(n_{0}\)</span></p>
+<p>From low values of <span class="math notranslate nohighlight">\(n_{0}\)</span>, the stock grows exponentially: the growing number of fish means the absolute birth rate increases. The growth levels off as resources grow thin and the death rate increases, until the death rate comes to equal the birth rate as the stock approaches its carrying capacity and the system approaches dynamic equilibrium. From values of <span class="math notranslate nohighlight">\(n_{0}&gt;K\)</span>, we see the opposite. The stock dies off: the limited resources mean the fish experience a higher death rate than birth rate until enough have died that the rates approach equilibrium.</p>
+<p>Now we’ll demonstrate how the graphical method can be used to make the same predictions.</p>
+</div>
+</div>
+<div class="section" id="the-logistic-model-redux">
+<h2>The Logistic Model redux<a class="headerlink" href="#the-logistic-model-redux" title="Permalink to this headline">¶</a></h2>
+<p>The logistic equation can be written in differential form as</p>
+<div class="math notranslate nohighlight" id="equation-2">
+<span class="eqno">(2)<a class="headerlink" href="#equation-2" title="Permalink to this equation">¶</a></span>\[\dot{n}=rn\cdot(1-n/K)\]</div>
+<p>in which <span class="math notranslate nohighlight">\(\dot{n}=dn/dt\)</span> (analogous to the instantaneous growth rate mentioned above). You can plug in Eqn 1 to verify that it’s a solution to Eqn 2. You can also see how <span class="math notranslate nohighlight">\(\dot{n}\)</span> decreases as <span class="math notranslate nohighlight">\(n\)</span> approaches <span class="math notranslate nohighlight">\(K\)</span> and the negative parenthetical term approaches <span class="math notranslate nohighlight">\(1\)</span>, matching the behavior we saw in the previous section.</p>
+<p>We can represent this graphically by plotting the relationship between <span class="math notranslate nohighlight">\(\dot{n}\)</span> and <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<div class="section" id="graph-2-first-order-phase-portrait">
+<h3>Graph 2: First order phase portrait<a class="headerlink" href="#graph-2-first-order-phase-portrait" title="Permalink to this headline">¶</a></h3>
+<p>Growth over stock. Sliders for <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(K\)</span>. Vectors and fixed points on the axis.</p>
+<p>This is a <strong>phase portrait</strong>. You may remember <strong>phase space</strong> as the space in which all of a system’s possible states can be represented. Since Eqn 2 is a first order equation, and the growth rate is uniquely determined by the stock size, the complete phase space is effectively just the <span class="math notranslate nohighlight">\(n\)</span>-axis. We predict how the system will move through possible states using <strong>trajectories</strong>, which are represented here as vectors on the <span class="math notranslate nohighlight">\(n\)</span>-axis. We deduce the magnitude and direction of the trajectories by the value of the <span class="math notranslate nohighlight">\(\dot{n}\)</span> curve at any given value of <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>Notice that the trajectories will only switch directions at points where the <span class="math notranslate nohighlight">\(\dot{n}\)</span> curve crosses the <span class="math notranslate nohighlight">\(n\)</span>-axis. These are the points at which the stock achieves equilibrium. The qualitative structure of the system’s trajectories (and therefore its behavior) is dictated by the location and nature of these <strong>fixed points</strong>, which we study using <strong>stability analysis</strong>.</p>
+<p>The goal of of stability analysis is to distinguish between fixed points that <em>attract</em> the system (<strong>stable points</strong>) and those that <em>repel</em> it (<strong>unstable points</strong>). As an example to illustrate the distinction, you might imagine a ball on a curved surface. Unstable points would be those where the ball is perched on a hilltop. Arbitrarily small perturbations send it tumbling away. Stable points would be those where the ball rests in the crook of a valley. Perturbations that might take the ball over the lip of the valley represent a threshold: after any disturbances smaller than the threshold, the ball will return to its position at the bottom.</p>
+<p>Returning to our logistic model, we can see from Graph 2 that there are two fixed points, at <span class="math notranslate nohighlight">\(n=0\)</span> (<span class="math notranslate nohighlight">\(n_{0}\)</span>) and <span class="math notranslate nohighlight">\(n=K\)</span> (<span class="math notranslate nohighlight">\(n_{K}\)</span>). We know that small stocks will make use of the abundance of available resources to grow exponentially. On the phase portrait, we see this behavior in the increasingly positive value of <span class="math notranslate nohighlight">\(\dot{n}\)</span> for values close to <span class="math notranslate nohighlight">\(n_{0}\)</span>, which carry the system away from the fixed point. <span class="math notranslate nohighlight">\(n_{0}\)</span> is unstable. We also know intuitively that the stock size tends to approach the carrying capacity, which marks <span class="math notranslate nohighlight">\(n_{K}\)</span> as a stable point. On the phase portrait, we see that the stock follows positive trajectories for <span class="math notranslate nohighlight">\(n&lt;n_{K}\)</span> and negative trajectories for <span class="math notranslate nohighlight">\(n&gt;n_{K}\)</span>. For all values of <span class="math notranslate nohighlight">\(n&gt;0\)</span>, the system will be pushed towards the equilibrium at <span class="math notranslate nohighlight">\(n=K\)</span>. Our intuitive knowledge is corroborated by the math.</p>
+<p>(Part of the logistic model’s wonderful simplicity is its choice to ignore that very small stocks are more likely to die off than to achieve exponential growth. Fish live in large environments, and at small enough numbers, they might not even be able to find each other often enough to offset their death rate. More complex models correct for this by introducing a <strong>Minimum Viable Population</strong>, a value marking the lowest stock size from which growth can be sustained. These models put the lower fixed point at <span class="math notranslate nohighlight">\(n=\)</span> MVP rather than at <span class="math notranslate nohighlight">\(n=0\)</span>. For <span class="math notranslate nohighlight">\(n&lt;\)</span> MVP, <span class="math notranslate nohighlight">\(\dot{n}\)</span> will be negative, and the stock will plummet toward a stable point at <span class="math notranslate nohighlight">\(n=0\)</span>. You might sketch out a phase portrait for such a model as an exercise.)</p>
+<p>Generally, for first-order systems, stable fixed points occur when <span class="math notranslate nohighlight">\(d\dot{n}/dn\)</span> is negative at an equilibrium point, and unstable fixed points occur when <span class="math notranslate nohighlight">\(d\dot{n}/dn\)</span> is positive. What do you think will happen when <span class="math notranslate nohighlight">\(d\dot{n}/dn=0\)</span>?</p>
+</div>
+</div>
+<div class="section" id="recap">
+<h2>Recap<a class="headerlink" href="#recap" title="Permalink to this headline">¶</a></h2>
+<p>Phase portraits are useful because they contain information about every possible trajectory or set of initial conditions. We’d need to plot a time series for every qualitatively distinct trajectory to get that amount of information using analytical methods. And when analytical methods aren’t available, the graphical method allows us to identify what those qualitative trajectories will look like.</p>
+<p>The trade off is that the graphical method does not enable us to easily make quantitative predictions, where a time series can tell us the stock size at any time <span class="math notranslate nohighlight">\(t\)</span>. The breadth of general information comes at the cost of more specific information. One should choose their approach carefully to match the nature of the problem.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./phase-diagrams"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../differential-equations/differentialequations.html" title="previous page">Differential Equations</a>
+    <a class='right-next' id="next-link" href="../bifurcations/bifurcations.html" title="next page">Bifurcations and Equilibrium</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>
