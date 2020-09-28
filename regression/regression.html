@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Regression &#8212; My sample book</title>
+    <title>Regression &#8212; Understanding Systems</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
@@ -60,7 +60,7 @@
   <img src="../_static/logo.png" class="logo" alt="logo">
   
   
-  <h1 class="site-logo" id="site-title">My sample book</h1>
+  <h1 class="site-logo" id="site-title">Understanding Systems</h1>
   
 </a>
 </div>
@@ -211,7 +211,7 @@
 <p>We’ll look at an example using only one variable (<strong>univariate</strong> regression) to start. For our dataset, we’ll be using a LIDAR tree-sensing dataset from <a class="reference external" href="https://www.earthdatascience.org/courses/earth-analytics/remote-sensing-uncertainty/import-summarize-tree-height-data/">here</a>. LIDAR measures the distance to a target using laser reflections. This dataset includes standardized observations of trees as well as the observed LIDAR height. We want to predict the actual height of the tree from its other characteristics, including the trunk diameter and crown diameter. To start with, let’s see if trunk diameter predicts height.</p>
 <p>The dependent variable here is tree height. The first independent variable we will consider is the trunk diameter.</p>
 <center>
-<p><img alt="Labeled Tree" src="../_images/tree1.png" /></p>
+<p><img alt="Labeled Tree" src="../_images/tree.png" /></p>
 <p><sub><sup><em>Fig. 1: The measurements we’ll be using for our independent variables.</em></sup></sub></p>
 </center>
 <p>After loading in and cleaning the data, we can perform a univariate linear regression using the LinearRegression() function from the scikit-learn module. We form arrays from the <em>stemheight</em> and <em>maxcanopydiam</em> columns of the dataframe and input them into the model.</p>
@@ -229,7 +229,7 @@
 <p><span class="math notranslate nohighlight">\(MSE = \frac{1}{N}\sum\limits_{i=1}^N (f_i - y_i)^2\)</span></p>
 </center>  
 <center>
-<p><img alt="Linear Regression" src="../_images/linreg1.png" /></p>
+<p><img alt="Linear Regression" src="../_images/linreg.png" /></p>
 <p><sub><sup><em>Fig. 2: The Mean Squared Error is calculated as the average squared error, or deviation between a data point and the regression line. The red circles are data points, the regression line is in purple, and the erorrs are the distances between them.</em></sup></sub></p>
 </center>
 <p>The <strong><span class="math notranslate nohighlight">\(R^2\)</span> coefficient</strong> is one measure of how well a model predicts the data. Speficially, <span class="math notranslate nohighlight">\(R^2\)</span>, also known as the <strong>coefficient of determination</strong>, is the proportion of the variance in the dependent variable (in this case, tree height) that can be explained by the independent variable(s) considered in the model (in this case, canopy diameter). We can calculate the <span class="math notranslate nohighlight">\(R^2\)</span> from our model like this:</p>
@@ -251,7 +251,7 @@
 </pre></div>
 </div>
 <center>
-<p><img alt="Univariate Regression" src="../_images/univariate_regression1.png" /></p>
+<p><img alt="Univariate Regression" src="../_images/univariate_regression.png" /></p>
 <p><sub><sup><em>Fig. 3: The results of our univariate linear regression, plotted with the data.</em></sup></sub></p>
 </center>
 <p>What if we have multiple variables that might be linearly predictive of the dependent variable? We can use <strong>multivariable regression</strong>. In python, this looks quite similar to how we performed univariate linear regression, except we input an array of the desired independent variables. The second variable we will add in our multivariate analysis is the diameter at branch height (DBH).</p>
@@ -265,8 +265,8 @@
 </div>
 <p>If we want to visualize multivariate regression, we will either need <em>n</em> 2D graphs, where <em>n</em> is the number of independent variables, or a single <em>n+1</em>-dimensional plot. Since we have 2 independent variables, we can plot a 3D graph that visualizes the relationship between all three variables and the model. Note that in 2 dimensions, the predicted heights do not form a perfect line - this is because the other variables not visualized on the plot also affect the predicted value.</p>
 <center>
-<p><img alt="Multivariate Regression in 2D" src="../_images/multivariate_regression1.png" /></p>
-<p><img alt="Multivariate Regression in 3D" src="../_images/multiple_regression_3d1.png" /></p>
+<p><img alt="Multivariate Regression in 2D" src="../_images/multivariate_regression.png" /></p>
+<p><img alt="Multivariate Regression in 3D" src="../_images/multiple_regression_3d.png" /></p>
 <p><sub><sup><em>Fig. 4: The results of our multivariate linear regression, plotted with the data. We can either plot the data in 3 dimensions and visualize the regression plane, or plot the data projected into 2 dimensions and the predicted values project into 2 dimensions.</em></sup></sub></p>
 </center>
 <p>Overall, looking at our results, we can see that both the DBH as well as the canopy diameter predict tree height. A larger trunk and canopy predict a taller tree. Based on common knowledge about trees, this conclusion makes sense. However, some linear regression analyses can uncover relationships that are less obvious. It is important to remember that regression detects <strong>correlation</strong> between two variables, not <strong>causation</strong>. Correlation is when two variables are associated with each other. Causation is when a change in the independent variable actually affects the dependent variable. While regression analysis can provide a useful starting point for further analysis, or confirm relationships already linked mechanistically, it cannot detect a causal link between two variables.</p>
@@ -308,7 +308,7 @@
     <div class="container">
       <p>
         
-          By The Jupyter Book Community<br/>
+          By Charlotte Merzbacher and Liam Carpenter-Urquhart<br/>
         
             &copy; Copyright 2020.<br/>
       </p>

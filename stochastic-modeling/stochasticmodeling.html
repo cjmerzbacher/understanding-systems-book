@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stochastic Modeling &#8212; My sample book</title>
+    <title>Stochastic Modeling &#8212; Understanding Systems</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
@@ -38,7 +38,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Network Properties" href="../annotating-graphs/annotatinggraphs.html" />
-    <link rel="prev" title="Stability Analysis Part 2: Bifurcations" href="../bifurcations/bifurcations.html" />
+    <link rel="prev" title="Bifurcations and Equilibrium" href="../bifurcations/bifurcations.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -60,7 +60,7 @@
   <img src="../_static/logo.png" class="logo" alt="logo">
   
   
-  <h1 class="site-logo" id="site-title">My sample book</h1>
+  <h1 class="site-logo" id="site-title">Understanding Systems</h1>
   
 </a>
 </div>
@@ -86,12 +86,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../phase-diagrams/phase_diagrams.html">
-   Stability Analysis Part 1: Phase Diagram Basics
+   Stability Analysis
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../bifurcations/bifurcations.html">
-   Stability Analysis Part 2: Bifurcations
+   Bifurcations and Equilibrium
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -201,12 +201,12 @@
 <h1>Stochastic Modeling<a class="headerlink" href="#stochastic-modeling" title="Permalink to this headline">¶</a></h1>
 <p>So far, the models we have considered all make one key assumption: the variables under consideration are continuous. Some, like concentrations, are actually continuous, but others, like the number of molecules in a cell, are simply so large as to be continuous in practice. But what if we are looking at the number of a specific protein in a single cell? Most cells contain only a finite (and usually quite small) number of a particular protein. In some cases, we do not need to model individual cells: we may be able to consider a population of cells as a single unit, for instance in the case of a bulk bioreactor. However, for other applications we may want to examine gene expression in individual cells. Single-cell analysis is a growing family of techniques that allows scientists to study heterogeneous populations of cells and understand complex intercellular dynamics.</p>
 <center>
-<p><img alt="Proteins glowing in a cell" src="../_images/protein_cell_cycle1.gif" /></p>
+<p><img alt="Proteins glowing in a cell" src="../_images/protein_cell_cycle.gif" /></p>
 <p><sub><sup><em>Fig. 1: Cell cycle dynamics at the single-cell level. E coli cells express green fluorescent microtubules and red fluorescent mitochondria. Note the limited yet variable number of mitochondria in each cell.</em></sup></sub></p>
 </center>
 <p>To more adequately describe these low-copy number dynamics, we will use <strong>stochastic modeling</strong>. We’ll use a basic model  similar to the one considered in the differential equations section <a class="reference internal" href="../differential-equations/differentialequations.html"><span class="doc std std-doc">here</span></a>:</p>
 <center>
-<p><img alt="Basic Model" src="../_images/equations_model1.png" /></p>
+<p><img alt="Basic Model" src="../_images/equations_model.png" /></p>
 <p><sub><sup><em>Fig. 2: The basic model incorporating mRNA and protein production and degradation. Note that the degradation of protein is equivalent to the cellular growth rate here, as proteins disperse in the dividing cell.</em></sup></sub></p>
 </center>
 <p>However, instead of using deterministic equations, we will model the probability of making a protein or mRNA molecule.Since the amount of DNA in the cell remains constant in our model, we can describe the number of mRNA molecules in the cell as a series of independent events. This means that, like many biological phenomena, the number of mRNA in the cell is distributed in a Poisson distribution.</p>
@@ -216,7 +216,7 @@
 <p>A <strong>Poisson distribution</strong> is a distribution that models the number of events occuring within a given time interval (in this case, the length of a single cell cycle). <span class="math notranslate nohighlight">\(\lambda\)</span> is the shape parameter, which indicates the average number of events in the time interval. In this case, <span class="math notranslate nohighlight">\(\lambda\)</span> is defined by the ratio of the rates of mRNA production and degradation, <span class="math notranslate nohighlight">\(\frac{S_m}{d_m}\)</span>, since our model treats production of a single mRNA molecule as an event.</p>
 <p>The mean number of proteins, on the other hand, is dependent on the number of mRNA molecules. For each time step, the mRNA molecule can either degrade or be translated into a protein. <span class="math notranslate nohighlight">\(S_p\)</span> is the proportion of time-steps that form a protein. The probability of producing a protein in a single time-step, or <span class="math notranslate nohighlight">\(p\)</span>, is just <span class="math notranslate nohighlight">\(S_p\)</span> divided by the total probability of producing or degrading a protein: <span class="math notranslate nohighlight">\(S_p + d_m\)</span>.</p>
 <center>
-<p><img alt="Figure with mRNA replication/degradation loop" src="../_images/mrna_degradation_loop1.png" /></p>
+<p><img alt="Figure with mRNA replication/degradation loop" src="../_images/mrna_degradation_loop.png" /></p>
 <p><sub><sup><em>Fig. 3: Examining only the protein production and mRNA degradation steps. In a single time step, mRNA can either be produced (<span class="math notranslate nohighlight">\(S_p\)</span>) or degrade (<span class="math notranslate nohighlight">\(d_m\)</span>).</em></sup></sub></p>
 </center>
 <p>We now have the probability of producing a protein in one cycle. But we want to know the probability of producing a specific number of proteins. <span class="math notranslate nohighlight">\(1-p\)</span> is the probability of not producing a protein in one time step. So, we can calculate the probability of producing 0, 1, 2, or N proteins as follows:</p>
@@ -228,7 +228,7 @@
 </center> 
 <p>This mechanism results in a <strong>geometric distribution</strong>. A geometric distribution shows the probability of ‘succeeding’, in this case producing a specific number of proteins, in a given number of time cycles. In this kind of distribution, the mean number of proteins is actually not the most likely number in the cell. The mean number of proteins per cell for our model is just the ratio of mRNA production to degradation multiplied by the protein production and degradation rates.</p>
 <center>
-<p><img alt="Summary figure of poisson/geometric distributions" src="../_images/distributions1.png" /></p>
+<p><img alt="Summary figure of poisson/geometric distributions" src="../_images/distributions.png" /></p>
 <p><sub><sup><em>Fig. 4: Sketches of Poisson and geometric distributions. Both these distributions are discrete.</em></sup></sub></p>
 </center>
 <p>It’s important to note that while the number of protein/mRNA molecules in a cell is random, the <em>distribution</em> of these molecules is not. These distributions change in predictable ways given <span class="math notranslate nohighlight">\(S_m\)</span>, <span class="math notranslate nohighlight">\(d_m\)</span>, or other parameters. The <strong>Master equation</strong> describes how these distributions evolve deterministically over time. Each state (number of molecules) is modeled with a separate deterministic equation. Examining the general case of <span class="math notranslate nohighlight">\(n\)</span> mRNA molecules, we have two adjacent states: one where the cell has one fewer molecules, and one where the cell has one more. <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> are the production and degradation functions for each transition. For example, <span class="math notranslate nohighlight">\(f_{n-1}\)</span> describes the production of the <span class="math notranslate nohighlight">\(n\)</span>th molecule.</p>
@@ -301,17 +301,17 @@
 </div>
 <p>We ran the simulation for <span class="math notranslate nohighlight">\(\frac{S_m}{d_m}\)</span> values of 0.75, 1, and 1.25. When the value of <span class="math notranslate nohighlight">\(\frac{S_m}{d_m}\)</span> is below one, production occurs faster than degradation so the overall number of mRNA molecules increases and the distribution shifts upward.</p>
 <center>
-<p><img alt="Sm/dm = 0.75" src="../_images/smds751.png" /></p>
+<p><img alt="Sm/dm = 0.75" src="../_images/smds75.png" /></p>
 <p><sub><sup><em>Fig. 5: Case of <span class="math notranslate nohighlight">\(S_m\)</span>/<span class="math notranslate nohighlight">\(d_s\)</span> = 0.75. The distribution of mRNA molecules shifts upward as production rates outstrip degradation.</em></sup></sub></p>
 </center>
 <p>At $\frac{S_m}{d_m} = 1, degradation and production rates are perfectly balanced, so the distribution of mRNA molecules remains the same - in this case, perfectly uniform.</p>
 <center>
-<p><img alt="Sm/dm = 1" src="../_images/smds11.png" /></p>
+<p><img alt="Sm/dm = 1" src="../_images/smds1.png" /></p>
 <p><sub><sup><em>Fig. 6: Case of <span class="math notranslate nohighlight">\(S_m\)</span>/<span class="math notranslate nohighlight">\(d_s\)</span> = 1. The distribution of mRNA molecules remain stable as the production and degradation rates are identical.</em></sup></sub></p>
 </center>
 <p>In the case of <span class="math notranslate nohighlight">\(\frac{S_m}{d_m} = 1.25\)</span>, degradation is faster than production, so the overal distribution shifts downward.</p>
 <center>
-<p><img alt="Sm/dm = 1.25" src="../_images/smds1251.png" /></p>
+<p><img alt="Sm/dm = 1.25" src="../_images/smds125.png" /></p>
 <p><sub><sup><em>Fig. 7: Case of <span class="math notranslate nohighlight">\(S_m\)</span>/<span class="math notranslate nohighlight">\(d_s\)</span> = 1.25. The distribution of mRNA molecules decreases as degradation outpaced production.</em></sup></sub></p>
 </center>
 <p>In this case, the number of possible initial conditions was small and the model complexity low, so the computational time was not an issue. However, as models incorporate more parameters, the naive protocol used above will start to take a long time. We can use methods such as the Gillespie algorithm and the Fokker-Plank approximation to speed computation. More informatiocan be found <a class="reference external" href="http://www.stat.yale.edu/~jtc5/GeneticNetworksGroup/Gillespie1977.pdf">here</a></p>
@@ -345,7 +345,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../bifurcations/bifurcations.html" title="previous page">Stability Analysis Part 2: Bifurcations</a>
+    <a class='left-prev' id="prev-link" href="../bifurcations/bifurcations.html" title="previous page">Bifurcations and Equilibrium</a>
     <a class='right-next' id="next-link" href="../annotating-graphs/annotatinggraphs.html" title="next page">Network Properties</a>
 
     </div>
@@ -353,7 +353,7 @@
     <div class="container">
       <p>
         
-          By The Jupyter Book Community<br/>
+          By Charlotte Merzbacher and Liam Carpenter-Urquhart<br/>
         
             &copy; Copyright 2020.<br/>
       </p>
