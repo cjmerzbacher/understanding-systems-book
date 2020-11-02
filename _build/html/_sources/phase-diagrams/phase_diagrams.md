@@ -1,59 +1,108 @@
-# Stability Analysis
+# Equilibrium Analysis
 
-What do you do when you encounter systems whose dynamics are so complex that the differential equations used to model them can't be (easily) solved with analytical methods? In this section, we explore how phase diagrams can be used to predict the system's future, and to form a qualitative overview of possible state trajectories. We'll apply this method to a fictional stock of "redfish" in a contained environment.
+In the previous section, we explored an analytical approach to differential equations. The analytical approach is a powerful way to predict a system's future states when you have a set of initial conditions to start with, but it's less useful when you need an overview of a system's overall dynamics. In this section, we'll explore one system's **equilibrium states**, and demonstrate a method that can tell us which (if any) of these equilibrium states our system will tend to approach from *any* set of inital values.
 
-## The Logistic Model
+One area where this approach is especially useful is that of fishery management.
 
-When approaching a system of differential equations, our goal is almost always to be able to predict the system's behavior given any set of initial conditions. We often approach this problem by deducing an algebraic equation we use to calculate precise values over time. But when the differential equations are too complex to solve, as is often the case for ecological applications, we still have options.
+## A very simple fishery model
 
-Let's demonstrate.
+We'll focus on the population of one fish species in a limited environment. Let's say we're studying redfish in a lake. We want a differential equation that can describe the dynamics of our redfish population. To get there, we'll need to map out the **feedback loops** that dominate those dynamics.
 
-You might be familiar with the **logistic** model for population growth. It uses the following parameters:
+<center>
 
-* $r$, the population's **intrinsic growth rate**. It's important to differentiate between the intrinsic growth rate and the instantaneous growth rate. $r$ doesn't measure the population's rate of growth at a given time, it dictates the overall speed at which the population approaches
-* $K$, the environment's **carrying capacity**. The logistic model assumes that the environment's resources are limited, such that there exists a maximum population size that can be sustained. $K$ represents that maximum size.
+![Causal Loop Diagram](lcd_fishpop.png)
 
-(Quick review of the difference between **variables** and **parameters**. Where variables are metrics by which we measure a system's behavior over time, parameters represent conditions that control the path of the system's bhavior. Where variables can be expected to change over time, parameters are generally only changed by influence from outside the system. When we make graphs of system behavior, we'll usually choose a few variables as the graph's axes, whereas parameters will determine the graph's shape.)
+<sub><sup>Fig 1: Causal loop diagram for our redfish stock. a) The stock is fed by flows in (birth) and flows out (deaths). b) In the absence of fishing pressure or natural predators, the birth rate is proportional to the stock size, and the death rate is dominated by intra-species competition for the lake's limited resources.</sup></sub>
+</center>
 
-Now, the logistic model is actually simple enough to have a reasonable algebraic equation:
+This is a **causal loop diagram**. We use it to track the **stocks** (boxes) and **flows** (arrows) that make up a system's state. Generally, stocks can be thought of as quantities or reservoirs, while flows can be thought of as processes. Stocks fill or drain through the effects of flows. When flows are affected in turn by the values of stocks, we say that there is a feedback.
 
-$$n=\frac{K}{1+Ae^{-rt}}$$ (1)
+In our simplified model, we've assumed that our redfish don't need to worry about any predatory or competitive species in their lake, that no new members will enter from outside the lake, and that the lake's maximum capacity is constant with time. With those assumptions, there will be two processes dominating the dynamics: the birthrate, and intra-species competition.
 
-in which $n =$ the stock size, $t =$ time, and $A = \frac{K-n_{0}}{n_{0}}$ where $n_{0} =$ the population at $t=0$.
+We see two feedbacks in Figure 1. The birthrate is proportional to the size of the redfish population, so we have a reinforcing feedback loop for redfish births. On the other side, we have our competition loop. As the population grows, the stock of the lake's available resources. When fewer resources are available, the death rate increases. 
 
-With this equation, we can plot a time series to see the logistic curve:
+The causal loop diagram is a useful tool for thinking through cause and effect, and tracing the system's response to its own dynamics. However, to find the values at which the flows will balance and our redfish stock will achieve equilibrium, we'll need a symbolic expression of these dynamics. We'll need an equation.
 
-### Graph 1: Logistic Curve
-Stock over time. Sliders for $K$, $r$, and $n_{0}$
+## The Phase Diagram
 
-From low values of $n_{0}$, the stock grows exponentially: the growing number of fish means the absolute birth rate increases. The growth levels off as resources grow thin and the death rate increases, until the death rate comes to equal the birth rate as the stock approaches its carrying capacity and the system approaches dynamic equilibrium. From values of $n_{0}>K$, we see the opposite. The stock dies off: the limited resources mean the fish experience a higher death rate than birth rate until enough have died that the rates approach equilibrium.
+The **logistic equation** is one way to mathematically express a system like this. The logistic equation states that the birthrate is directly proportional to the population size. It states that the death rate is proportional to the population's number of competitive relationships (the square of the stock size), and inversely proportional to the environment's capacity for growth. It states all this in the following terms:
 
-Now we'll demonstrate how the graphical method can be used to make the same predictions.
+>$$\dot{n}=births-deaths\\$$
+>$$\dot{n}= rn - \frac{rn^2}{K} \\$$ 
+>$$\dot{n}= rn\cdot(1-\frac{n}{K})$$ (1)
 
-## The Logistic Model redux
+Here, $n$ represents the size of the redfish stock. $\dot{n}=dn/dt$. $r$ represents the stock's **intrinsic growth rate**, which you can think of as the population's growth rate in the absence of competition. Most pelagic fish species tend to maintain an annual intrinsic growth rate between $0.1$ and $0.3$. and $K$ represents the lake's **carrying capacity**, or the maximum number of redfish that can be supported by the lake's total resources.
 
-The logistic equation can be written in differential form as
+We can use the methods of the previous section to generate time series for a handful of initial conditions.
 
-$$\dot{n}=rn\cdot(1-n/K)$$ (2)
+```python
+# Plot logistic time series
 
-in which $\dot{n}=dn/dt$ (analogous to the instantaneous growth rate mentioned above). You can plug in Eqn 1 to verify that it's a solution to Eqn 2. You can also see how $\dot{n}$ decreases as $n$ approaches $K$ and the negative parenthetical term approaches $1$, matching the behavior we saw in the previous section.
+def logistic(times):
+    n = []
+    for t in times:
+        n.append(K/(1+(K-n_zero)/n_zero*exp(-r*t)))
+    return n
 
-We can represent this graphically by plotting the relationship between $\dot{n}$ and $n$.
+t = np.linspace(0., 40)
 
-### Graph 2: First order phase portrait
-Growth over stock. Sliders for $r$ and $K$. Vectors and fixed points on the axis.
+# Set constants
+r = 0.4; K = 700
 
-This is a **phase portrait**. You may remember **phase space** as the space in which all of a system's possible states can be represented. Since Eqn 2 is a first order equation, and the growth rate is uniquely determined by the stock size, the complete phase space is effectively just the $n$-axis. We predict how the system will move through possible states using **trajectories**, which are represented here as vectors on the $n$-axis. We deduce the magnitude and direction of the trajectories by the value of the $\dot{n}$ curve at any given value of $n$.
+# One time series for each initial value
+n_zero = 100
+logistic_a = logistic(t)
 
-Notice that the trajectories will only switch directions at points where the $\dot{n}$ curve crosses the $n$-axis. These are the points at which the stock achieves equilibrium. The qualitative structure of the system's trajectories (and therefore its behavior) is dictated by the location and nature of these **fixed points**, which we study using **stability analysis**.
+n_zero = 800
+logistic_b = logistic(t)
+
+n_zero = K
+logistic_c = logistic(t)
+```
+
+<center>
+
+![Logistic Equation Time Series](logistic.png)
+
+<sub><sup>Fig 2: Time series for the logistic equation. We see that the stock size always approaches the carrying capacity, whether from below (a), from above (b), or from equilibrium (c).</sup></sub>
+
+</center>
+
+When the stock's initial value is far below the carrying capacity ($n_{0}<<K$), the birthrate starts off much higher than the death rate, and the population takes off. Around $n=K/2$, the death rate, increasing like $n^2$, begins to balance the birthrate, and the stock's growth begins to plateau. Near $n=K$, the death rate equals the birth rate, and the stock achieves dynamic equilibrium. As number of redfish that die in a year equals the number that are born, and the stock size remains constant.
+
+When $n_{0}>K$, we see the process happening in reverse: the death rate starting high and decreasing as the stock size decreases, until it has fallen enough for the birthrate to balance it. When $n_{0}=K$, the system starts off in dynamic equilibrium, at which it remains.
+
+These time series are useful, but they are a complicated way to tell a fairly simple story: the redfish stock always approaches its carrying capacity. Our goal is to find a simple way to tell this simple story. We do this by changing perspective: instead of plotting the stock size according time, we plot the growth rate according to stock size.
+
+```python
+# Constants
+r = 0.4  # growth rate
+K = 700  # carrying capacity
+
+def phase_portrait(pops):
+    n_dot = []
+    for n in pops:
+        n_dot.append(r*n*(1-(n/K)))
+    return n_dot
+```
+
+<center>
+
+![Fish Stock Phase Portrait](phase_portrait.PNG)
+
+<sub><sup>Fig 3: First order phase portrait for the logistic equation. The stock's growth rate is plotted against population size. Stationary points are marked with circles on the n-axis. System trajectories are marked with arrows.</sup></sub>
+
+</center>
+
+This is a **phase portrait**. Any of our simplified system's states can be described completely by its respective value of $n$. Those states are laid out along the n-axis. Because of the system's one-dimensionality, and because any value of $n$ has only one corresponding value of $\dot{n}$, we can use this profile to predict how the system will move through its possible states. These **trajectories** are represented here as vectors on the $n$-axis, whose magnitude and direction are deterimined by the value of the $\dot{n}$ curve at any given value of $n$.
+
+Notice that the trajectories will only switch directions at points where the $\dot{n}$ curve crosses the $n$-axis. These are the points at which the stock's inflows match it outflows, and where the system achieves equilibrium. The qualitative structure of the system's trajectories (and therefore its behavior) is dictated by the location and nature of these **fixed points**, which we study using **stability analysis**.
 
 The goal of of stability analysis is to distinguish between fixed points that *attract* the system (**stable points**) and those that *repel* it (**unstable points**). As an example to illustrate the distinction, you might imagine a ball on a curved surface. Unstable points would be those where the ball is perched on a hilltop. Arbitrarily small perturbations send it tumbling away. Stable points would be those where the ball rests in the crook of a valley. Perturbations that might take the ball over the lip of the valley represent a threshold: after any disturbances smaller than the threshold, the ball will return to its position at the bottom.
 
 Returning to our logistic model, we can see from Graph 2 that there are two fixed points, at $n=0$ ($n_{0}$) and $n=K$ ($n_{K}$). We know that small stocks will make use of the abundance of available resources to grow exponentially. On the phase portrait, we see this behavior in the increasingly positive value of $\dot{n}$ for values close to $n_{0}$, which carry the system away from the fixed point. $n_{0}$ is unstable. We also know intuitively that the stock size tends to approach the carrying capacity, which marks $n_{K}$ as a stable point. On the phase portrait, we see that the stock follows positive trajectories for $n<n_{K}$ and negative trajectories for $n>n_{K}$. For all values of $n>0$, the system will be pushed towards the equilibrium at $n=K$. Our intuitive knowledge is corroborated by the math.
 
-(Part of the logistic model's wonderful simplicity is its choice to ignore that very small stocks are more likely to die off than to achieve exponential growth. Fish live in large environments, and at small enough numbers, they might not even be able to find each other often enough to offset their death rate. More complex models correct for this by introducing a **Minimum Viable Population**, a value marking the lowest stock size from which growth can be sustained. These models put the lower fixed point at $n=$ MVP rather than at $n=0$. For $n<$ MVP, $\dot{n}$ will be negative, and the stock will plummet toward a stable point at $n=0$. You might sketch out a phase portrait for such a model as an exercise.)
-
-Generally, for first-order systems, stable fixed points occur when $d\dot{n}/dn$ is negative at an equilibrium point, and unstable fixed points occur when $d\dot{n}/dn$ is positive. What do you think will happen when $d\dot{n}/dn=0$?
+Generally, for such one-dimensional (or first-order) systems, stable fixed points occur when $d\dot{n}/dn$ is negative at an equilibrium point, and unstable fixed points occur when $d\dot{n}/dn$ is positive. What do you think will happen when $d\dot{n}/dn=0$?
 
 ## Recap
 

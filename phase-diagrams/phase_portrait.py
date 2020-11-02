@@ -2,7 +2,7 @@ import numpy as np
 from math import exp
 from matplotlib import pyplot as plt
 import ipywidgets as widgets
-from IPython.display import 
+from IPython.display import display
 
 # Sliders
 growth = widgets.FloatSlider(min=0.1, max=0.8)
@@ -13,8 +13,8 @@ print("Carrying Capacity: ")
 display(carrying)
 
 # Constants
-r = growth.value  # growth rate
-K = carrying.value  # carrying capacity
+r = 0.4  # growth rate
+K = 700  # carrying capacity
 
 def phase_portrait(pops):
     n_dot = []

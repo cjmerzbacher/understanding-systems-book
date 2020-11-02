@@ -1,4 +1,4 @@
-- file: intro
+- file: intro/intro
 - file: differential-equations/differentialequations
 - file: phase-diagrams/phase_diagrams
 - file: bifurcations/bifurcations
@@ -6,4 +6,5 @@
 - file: annotating-graphs/annotatinggraphs
 - file: clustering-graphs/clusteringgraphs
 - file: regression/regression
-- file: bibliography
+- file: intro/acknowledgements
+- file: intro/bibliography
